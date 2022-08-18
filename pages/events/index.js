@@ -20,7 +20,7 @@ export default function EventsPage({ events }) {
 
 // equal to componendDidMount or useEffect() hook
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/api/events`);
+  const res = await fetch(`${API_URL}/events`);
   const events = await res.json();
 
   // console log output will in the terminal not on in the dev tools in client/browser
