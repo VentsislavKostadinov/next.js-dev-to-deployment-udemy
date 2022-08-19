@@ -35,11 +35,10 @@ export default function EventPageId({ evt }) {
           </div>
         )}
 
-        <h3>Performace:</h3>
-        <p>{evt.performance}</p>
-        <h3>Description:</h3>
+        <h3>Performer: {evt.performers}</h3>
+        <h3>Description: {evt.description}</h3>
         <h3>Venue: {evt.venue}</h3>
-        <p>{evt.address}</p>
+        <p>Address: {evt.address}</p>
 
         <Link href="/events">
           <a className={styles.back}>
@@ -56,23 +55,19 @@ export default function EventPageId({ evt }) {
 /* export async function getStaticPaths() {
   const res = await fetch(`${API_URL}/api/events`);
   const events = await res.json();
-
   const paths = events.map((evt) => ({
     params: { slug: evt.slug },
   }));
-
   return {
     paths,
     fallback: true
   }
 }
-
 export async function getStaticProps({params: {slug}}) {
  
   const res = await fetch(`${API_URL}/api/events/${slug}`);
   const events = await res.json();
   console.log(events);
-
   return {
     props: {
       evt: events[0]
