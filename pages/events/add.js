@@ -47,6 +47,7 @@ export default function AddEventPage() {
       }
       toast.error("Something Went Wrong");
     } else {
+      toast.success("Event successfully added!")
       setValues({
         name: "",
         performers: "",

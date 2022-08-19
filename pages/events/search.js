@@ -13,7 +13,7 @@ export default function SearchPage({ events }) {
       <Link href="/events">
         <a className={styles.back}>Go Back</a>
       </Link>
-      <h1>Search Results for: "{router.query.term}"</h1>
+      <h1>Search Results for: &rdquo; {router.query.term} &rdquo;</h1>
       <h1>Events</h1>
       {events.lengthj === 0 && <h3>No events to show</h3>}
 
@@ -48,4 +48,3 @@ export async function getServerSideProps({ query: { term } }) {
     props: { events },
   };
 }
-
