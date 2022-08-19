@@ -48,3 +48,4 @@ export async function getServerSideProps({ query: { term } }) {
     props: { events },
   };
 }
+
