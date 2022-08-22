@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaImage } from "react-icons/fa";
 import Modal from "../../../components/Modal";
+import ImageUpload from "../../../components/ImageUpload";
 
 export default function EditEventPage({ evt }) {
   const [values, setValues] = useState({
@@ -44,7 +45,7 @@ export default function EditEventPage({ evt }) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
       },
       body: JSON.stringify(values),
     });
@@ -158,7 +159,7 @@ export default function EditEventPage({ evt }) {
 
       <h2>Event Image</h2>
       {imagePreview ? (
-        <Image src={imagePreview} height={100} width={170} alt='img' />
+        <Image src={imagePreview} height={100} width={170} alt="img" />
       ) : (
         <div>
           <p>No image uploaded</p>
@@ -175,12 +176,7 @@ export default function EditEventPage({ evt }) {
       </div>
 
       <Modal show={showModal} onClose={() => setShowModal(false)}>
-        {/*<ImageUpload
-            evtId={evt.id}
-            imageUploaded={imageUploaded}
-            token={token}
-        /> */}
-        UPLOAD IMAGE
+        <ImageUpload evtId={evt.id} imageUploaded={imageUploaded} />
       </Modal>
     </Layout>
   );
