@@ -1,6 +1,5 @@
 import { API_URL } from "../../config";
 import cookie from "cookie";
-import { setupCookies } from "../../cookies/cookies";
 
 export default async (req, res) => {
   if (req.method === "POST") {
@@ -24,7 +23,13 @@ export default async (req, res) => {
       // @ Set cookie
       res.setHeader(
         "Set-Cookie",
-        cookie.serialize("token", data.jwt, { setupCookies })
+        cookie.serialize("token", data.jwt, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV !== "development",
+          maxAge: 60 * 60 * 24 * 7,
+          sameSite: "strict",
+          path: "/",
+        })
       );
 
       res.status(200).json({ user: data.user });
